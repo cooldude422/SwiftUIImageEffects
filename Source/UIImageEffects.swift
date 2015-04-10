@@ -169,6 +169,15 @@ public extension UIImage {
                 let data = CGBitmapContextGetData(context)
                 let width = CGBitmapContextGetWidth(context)
                 let height = CGBitmapContextGetHeight(context)
+                
+                //UNCOMMENT FOR Xcode 6.2 or earlier
+                //let width = CGBitmapContextGetWidth(context)
+                //let height = CGBitmapContextGetHeight(context))
+
+                //UNCOMMENT FOR Xcode 6.3 or later
+                let width: vImagePixelCount = vImagePixelCount(CGBitmapContextGetWidth(context))
+                let height: vImagePixelCount = vImagePixelCount(CGBitmapContextGetHeight(context))
+                
                 let rowBytes = CGBitmapContextGetBytesPerRow(context)
                 
                 return vImage_Buffer(data: data, height: height, width: width, rowBytes: rowBytes)
